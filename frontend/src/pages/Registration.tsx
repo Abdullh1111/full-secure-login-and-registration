@@ -1,7 +1,9 @@
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 
 const Registration = () => {
+  const {register,handleSubmit,formState:{errors}} = useForm()
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
@@ -14,34 +16,37 @@ const Registration = () => {
       </p>
     </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <form className="card-body">
+      <form className="card-body" onSubmit={handleSubmit((data)=>console.log(data))}>
       <div className="form-control">
           <label className="label">
             <span className="label-text">Full  Name</span>
 
           </label>
-          <input type="email" placeholder="Full Name" className="input input-bordered" required />
+          <input {...register ('name',{minLength:{value:3,message:'Name must have 3 character'}})} type="text" placeholder="Full Name" className="input input-bordered" required />
+          {errors.name && <p className="text-red-500">{errors.name.message as string}</p>}
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+          <input {...register ('email')} type="email" placeholder="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered" required />
+          <input {...register ('password',{minLength:{value:8,message:"password must have 8 character"}})} type="password" placeholder="password" className="input input-bordered" required />
+          {errors.password && <p className="text-red-500">{errors.password.message as string}</p>}
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Confirm Password</span>
           </label>
-          <input type="email" placeholder="Confirm Password" className="input input-bordered" required />
+          <input {...register('confirmPass',{minLength:{value:8,message:"password must have 8 character"}})} type="password" placeholder="Confirm Password" className="input input-bordered" required />
+          {errors.confirmPass && <p className="text-red-500">{errors.confirmPass.message as string}</p>}
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Registration</button>
+          <button type="submit" className="btn btn-primary">Registration</button>
         </div>
       </form>
       <div className="mb-10 flex justify-center items-center">Already have an Account? 
