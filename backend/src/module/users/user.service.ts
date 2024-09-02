@@ -10,7 +10,7 @@ const registration = async (payload: Partial<TUser>) => {
 
 // login
 const login = async (payload: Partial<TUser>) => {
-  const { email, password, role } = payload;
+  const { email, password } = payload;
   const result = await user.findOne({ email });
   if (!result) {
     throw new appError("User doesn't exist", 400);
@@ -19,9 +19,6 @@ const login = async (payload: Partial<TUser>) => {
 
   if (!comparePass) {
     throw new appError("Invalid password", 400);
-  }
-  if (role !== result.role) {
-    throw new appError("Account doesn't exists with current role", 400);
   }
   return result;
 };
