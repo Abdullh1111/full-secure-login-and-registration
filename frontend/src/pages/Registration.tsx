@@ -1,9 +1,17 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { handleError } from "../hooks/Toast";
 
 
 const Registration = () => {
   const {register,handleSubmit,formState:{errors}} = useForm()
+  const onSubmit =  (data: FieldValues) => {
+    if(data.password!==data.confirmPass){
+      return handleError('Passwords do not match')
+    }
+    console.log(data);
+    
+  }
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
@@ -16,7 +24,7 @@ const Registration = () => {
       </p>
     </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <form className="card-body" onSubmit={handleSubmit((data)=>console.log(data))}>
+      <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control">
           <label className="label">
             <span className="label-text">Full  Name</span>
