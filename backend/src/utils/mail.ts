@@ -14,12 +14,13 @@ const transporter = nodemailer.createTransport({
 });
 
 // async..await is not allowed in global scope, must use a wrapper
- async function sendEmail(otp: string) {
+ async function sendEmail(otp: string,email:string) {
  try{
+  
      // send mail with defined transport object
   const info = await transporter.sendMail({
     from: '"Secure Login" <abdullahaaa4474032@gmail.com>', // sender address
-    to: "gifirag224@ndiety.com", // list of receivers
+    to: email, // list of receivers
     subject: "Verify your code", // Subject line
     html:emailBody(otp), // html body
   });

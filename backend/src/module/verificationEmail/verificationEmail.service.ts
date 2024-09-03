@@ -1,7 +1,6 @@
 import AppError from "../../ErrorHandler/appError";
 import { otp } from "../../hooks/otpGenerator";
 import sendEmail from "../../utils/mail";
-import { TUser } from "../users/user.interface";
 import { user } from "../users/user.model";
 import { TVerification } from "./verificationEmail.interface";
 import { verification } from "./verificationEmail.model";
@@ -9,7 +8,9 @@ import { verification } from "./verificationEmail.model";
 const sendCode = async (payload: TVerification) => {
     const otps = otp()
     const result = (await verification.create({...payload,otp:otps}));
-    await sendEmail(otps)
+    // console.log(otps);
+    
+    await sendEmail(otps,payload.email)
   };
 
 
