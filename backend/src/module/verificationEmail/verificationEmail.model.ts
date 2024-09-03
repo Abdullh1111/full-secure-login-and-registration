@@ -1,29 +1,24 @@
 import { model, Schema } from "mongoose";
-import bcrypt from "bcrypt";
-import config from "../../config";
+// import bcrypt from "bcrypt";
+// import config from "../../config";
 import { TVerification } from "./verificationEmail.interface";
 
 const verificationSchema = new Schema<TVerification>(
   {
-    fullName: { type: String, required: true },
+    fullName: { type: String },
     email: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String },
     otp: {type: String},
     role: { type: String, required: true, enum: ["user", "admin"], default: 'user' },
-  },
-  {
-    timestamps: true,  // Automatically adds createdAt and updatedAt fields
+    createdAt: {type:Date, default: Date.now, expires:300}
   }
 );
 
-// Create a TTL index on the createdAt field
-verificationSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });  
 
 // pre-save function
-verificationSchema.pre("save", async function () {
-  const pass: string = await bcrypt.hash(this.password, Number(config.salt));
-  this.password = pass;
-});
-
+// verificationSchema.pre("save", async function () {
+//   const pass: string = await bcrypt.hash(this.password, Number(config.salt));
+//   this.password = pass;
+// });
 // methods
-export const verification = model<TVerification>("Verification_code", verificationSchema);
+export const verification = model<TVerification>("verification", verificationSchema);

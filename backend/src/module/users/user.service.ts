@@ -3,10 +3,7 @@ import { TUser } from "./user.interface";
 import { user } from "./user.model";
 import bcrypt from "bcrypt";
 // registration
-const registration = async (payload: Partial<TUser>) => {
-  const result = user.create(payload);
-  return result;
-};
+
 
 // login
 const login = async (payload: Partial<TUser>) => {
@@ -25,12 +22,11 @@ const login = async (payload: Partial<TUser>) => {
 
 // update Data
 const updateData = async (payload: Partial<TUser>, email: string) => {
-  const result = user.updateOne({ email }, payload);
+  const result =await user.updateOne({ email }, payload);
   return result;
 };
 
 export default {
-  registration,
   login,
   updateData,
 };

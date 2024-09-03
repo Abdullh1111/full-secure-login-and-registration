@@ -3,14 +3,6 @@ import catchAsync from "../../ErrorHandler/catcAsync";
 import userService from "./user.service";
 
 // registration
-const registration = catchAsync(async (req, res) => {
-    const result = await userService.registration(req.body)
-    res.status(201).json({
-        success: true,
-        message: "User created successfully",
-        data: result
-    })
-})
 
 // login
 const login = catchAsync(async (req, res) => {
@@ -50,7 +42,6 @@ const updateData = catchAsync(async (req, res) => {
 })
 
 export default {
-    registration,
     login,
     logout,
     updateData

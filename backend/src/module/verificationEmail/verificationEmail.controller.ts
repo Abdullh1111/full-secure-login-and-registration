@@ -10,6 +10,16 @@ const sendCode = catchAsync(async (req, res) => {
     })
 })
 
+
+const registration = catchAsync(async (req, res) => {
+    const result = await verificationEmailService.registration(req.body)
+    res.status(201).json({
+        success: true,
+        message: "User created successfully",
+        data: result
+    })
+})
 export default {
-    sendCode
+    sendCode,
+    registration
 }
