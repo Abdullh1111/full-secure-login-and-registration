@@ -8,6 +8,7 @@ const verificationSchema = new Schema<TVerification>(
     fullName: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    otp: {type: String},
     role: { type: String, required: true, enum: ["user", "admin"], default: 'user' },
   },
   {
