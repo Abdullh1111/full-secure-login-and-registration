@@ -16,7 +16,7 @@ const verificationSchema = new Schema<TVerification>(
 );
 
 // Create a TTL index on the createdAt field
-verificationSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });  // 180 seconds = 3 minutes
+verificationSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });  
 
 // pre-save function
 verificationSchema.pre("save", async function () {

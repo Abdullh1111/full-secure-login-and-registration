@@ -1,13 +1,14 @@
 import nodemailer from 'nodemailer'
 import AppError from '../ErrorHandler/appError';
+import { emailBody } from './emailsBody';
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
-  port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "maddison53@ethereal.email",
-    pass: "jn7jnAPss4f63QBp6D",
+    user: "abdullahaaa4474032@gmail.com",
+    pass: "fjfc szky gqik wsex",
   },
 });
 
@@ -16,11 +17,10 @@ const transporter = nodemailer.createTransport({
  try{
      // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
-    to: "bar@example.com, baz@example.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    from: '"Secure Login" <abdullahaaa4474032@gmail.com>', // sender address
+    to: "gifirag224@ndiety.com", // list of receivers
+    subject: "Verify your code", // Subject line
+    html:emailBody, // html body
   });
 
   console.log("Message sent: %s", info.messageId);
