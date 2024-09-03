@@ -1,11 +1,12 @@
 import { FieldValues, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {handleLocalError,  handleFetchError } from "../hooks/Toast";
 import { useEmailVerifyMutation } from "../service/verificationApi";
 import { useEffect } from "react";
 import { TUser } from "../Types/userType";
 
 const Registration = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -16,18 +17,20 @@ const Registration = () => {
     if (data.password !== data.confirmPass) {
       return handleLocalError("Passwords do not match");
     }
+    
+    sessionStorage.setItem("registerData", JSON.stringify(data));
     // API call to register user
     update({email: data.email});
   };
   useEffect(() => {
     if (data) {
       
-    sessionStorage.setItem("registerData", JSON.stringify(data));
-      
+      navigate('/verifyOtp')
     }
     if(error){
       handleFetchError(error)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, data]);
 
   return isLoading ? (
