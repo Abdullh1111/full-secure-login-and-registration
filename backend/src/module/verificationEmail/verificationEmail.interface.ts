@@ -2,7 +2,7 @@ export type TVerification = {
     fullName: string;
     email: string;
     password: string;
-    token: string;
+    code: string;
     role: string;
     createdAt: Date;
   };
