@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { userApi } from '../service/userApi'
+import { verificationApi } from '../service/verificationApi'
 
 export const store = configureStore({
   reducer: {
-    [userApi.reducerPath] : userApi.reducer
+    [userApi.reducerPath] : userApi.reducer,
+    [verificationApi.reducerPath] : verificationApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(userApi.middleware),
+    getDefaultMiddleware().concat(userApi.middleware, verificationApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

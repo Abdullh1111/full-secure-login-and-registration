@@ -9,6 +9,8 @@ const Registration = () => {
     if(data.password!==data.confirmPass){
       return handleError('Passwords do not match')
     }
+    // API call to register user
+    sessionStorage.setItem("registerData", JSON.stringify(data))
     console.log(data);
     
   }
