@@ -1,20 +1,34 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { TUser } from "../Types/userType";
+import { useRegisterMutation } from "../service/verificationApi";
+import { useEffect } from "react";
+import { handleFetchError, handleSuccess } from "../hooks/Toast";
 
 const VerifyOtp = () => {
-  const data = sessionStorage.getItem("registerData") as string;
-  const parseData: TUser = JSON.parse(data);
+  const datad = sessionStorage.getItem("registerData") as string;
+  const parseData: TUser = JSON.parse(datad);
+  const [update, { data, error, isLoading }] = useRegisterMutation();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data: FieldValues) => {
-    const datas = {...data,...parseData}
-    console.log(datas);
-    
+    const datas = { ...data, ...parseData };
+    update(datas);
   };
-  return (
+  useEffect(() => {
+    if (data) {
+      handleSuccess(data?.message);
+    }
+    if (error) {
+      handleFetchError(error);
+    }
+  }, [error, data]);
+  return isLoading ? (
+    <div>loading</div>
+  ) : (
     <div className="h-screen flex flex-col gap-10 justify-center items-center">
       <p className="text-4xl ">
         {" "}

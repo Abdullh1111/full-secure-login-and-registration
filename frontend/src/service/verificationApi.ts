@@ -16,8 +16,15 @@ export const verificationApi = createApi({
                 body: data
               })
             }),
+            register: builder.mutation({
+                query: (data) =>({
+                  url: '/register',
+                  method: 'POST',
+                  body: data
+                })
+              }),
         })
 
 })
 
-export const {useEmailVerifyMutation} = verificationApi
+export const {useEmailVerifyMutation, useRegisterMutation} = verificationApi

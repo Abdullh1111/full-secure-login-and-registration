@@ -5,7 +5,7 @@ import { TVerification } from "./verificationEmail.interface";
 
 const verificationSchema = new Schema<TVerification>(
   {
-    fullName: { type: String },
+    name: { type: String },
     email: { type: String, required: true },
     password: { type: String },
     otp: {type: String},
