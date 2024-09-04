@@ -41,8 +41,18 @@ const updateData = catchAsync(async (req, res) => {
     })
 })
 
+// get user data
+const userData = catchAsync(async (req, res) => {
+    
+    res.status(200).json({
+        success: true,
+        message: "Get user data successfully",
+        data: res.locals.user
+    })
+})
 export default {
     login,
     logout,
-    updateData
+    updateData,
+    userData
 }
