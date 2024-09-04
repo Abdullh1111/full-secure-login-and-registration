@@ -13,7 +13,7 @@ const MainLayout = () => {
     return (
         isLoading ? <div>loading...</div> :
         <div>
-           
+           hello
         </div>
     );
 };
