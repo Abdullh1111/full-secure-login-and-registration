@@ -8,7 +8,6 @@ const userExists = async (req: Request, res: Response, next: NextFunction) => {
   if (result) {
     return next(new appError("user already exists", 400));
   }
-  res.locals.user = result
   next();
 };
 

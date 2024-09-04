@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { url } from "../MainUrl";
 
@@ -16,8 +17,14 @@ export const userApi = createApi({
                 body: data
               })
             }),
+            getUserData: builder.query<any,void>({
+              query: () =>({
+                url: '/getuserdata',
+                method: 'GET'
+              })
+            }),
         })
 
 })
 
-export const {useLoginUserMutation} = userApi
+export const {useLoginUserMutation, useGetUserDataQuery} = userApi

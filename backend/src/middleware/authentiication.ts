@@ -12,7 +12,7 @@ const authUser = (req:Request,res: Response, next: NextFunction) =>{
     if(!decode){
         throw new appError("User is unauthorize",401)
     }
-    req.body.user= decode
+    res.locals.user = decode
     next() 
 
 }
