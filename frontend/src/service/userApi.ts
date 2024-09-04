@@ -23,8 +23,14 @@ export const userApi = createApi({
                 method: 'GET'
               })
             }),
+            logOut: builder.query<any,void>({
+              query: () =>({
+                url: '/logout',
+                method: 'GET'
+              })
+            }),
         })
 
 })
 
-export const {useLoginUserMutation, useGetUserDataQuery} = userApi
+export const {useLoginUserMutation, useGetUserDataQuery,useLazyLogOutQuery} = userApi
