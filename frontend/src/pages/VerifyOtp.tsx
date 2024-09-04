@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { handleFetchError, handleSuccess } from "../hooks/Toast";
 
 const VerifyOtp = () => {
+  
+  
   const datad = sessionStorage.getItem("registerData") as string;
   const parseData: TUser = JSON.parse(datad);
   const [update, { data, error, isLoading }] = useRegisterMutation();
@@ -33,7 +35,7 @@ const VerifyOtp = () => {
       <p className="text-4xl ">
         {" "}
         We sent otp to your{" "}
-        <span className="font-bold underline">{parseData.email}</span> account
+        <span className="font-bold underline">{parseData?.email}</span> account
       </p>
       <form
         onSubmit={handleSubmit(onSubmit)}

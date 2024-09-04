@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { TUser } from "../../Types/userType";
+ 
+const initialState :Partial<TUser>={
 
-const initialState = {
-    user: null,
 }
- const userSlice = createSlice({
+export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        userData:(state,action)=>{
-            state.user = action.payload
+        userData:(_state,action)=>{
+            
+            return {...action.payload}
         }
     }
 })

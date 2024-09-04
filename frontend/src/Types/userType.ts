@@ -1,5 +1,5 @@
 export type TUser = {
-    fullName: string;
+    name: string;
     email: string;
     password: string;
     confirmPass: string

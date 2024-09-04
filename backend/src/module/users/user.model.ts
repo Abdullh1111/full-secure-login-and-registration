@@ -27,7 +27,7 @@ userSchema.pre("save", async function () {
 // methods
 userSchema.method("token", function token() {
   return jwt.sign(
-    { id: this._id, email: this.email, role: this.role },
+    { id: this._id,name:this.name, email: this.email, role: this.role },
     config.jwt_secret as string,
     { expiresIn: "30d" }
   );
