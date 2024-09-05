@@ -2,7 +2,6 @@ import { model, Schema } from "mongoose";
 // import bcrypt from "bcrypt";
 // import config from "../../config";
 import { TVerification } from "./verificationEmail.interface";
-
 const verificationSchema = new Schema<TVerification>(
   {
     name: { type: String },

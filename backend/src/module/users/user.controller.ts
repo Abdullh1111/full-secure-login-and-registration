@@ -30,16 +30,7 @@ const logout = catchAsync(async (req, res) => {
     })
 })
 
-// update Data
-const updateData = catchAsync(async (req, res) => {
-    const {email} = req.body.user
-    const result = await userService.updateData(req.body.update,email)
-    res.status(201).json({
-        success: true,
-        message: "User created successfully",
-        data: result
-    })
-})
+
 
 // get user data
 const userData = catchAsync(async (req, res) => {
@@ -53,6 +44,5 @@ const userData = catchAsync(async (req, res) => {
 export default {
     login,
     logout,
-    updateData,
     userData
 }

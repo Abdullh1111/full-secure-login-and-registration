@@ -20,13 +20,8 @@ const login = async (payload: Partial<TUser>) => {
   return result;
 };
 
-// update Data
-const updateData = async (payload: Partial<TUser>, email: string) => {
-  const result =await user.updateOne({ email }, payload);
-  return result;
-};
+
 
 export default {
-  login,
-  updateData,
+  login
 };
