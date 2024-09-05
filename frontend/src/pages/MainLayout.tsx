@@ -19,7 +19,7 @@ const MainLayout = () => {
             handleFetchError(error)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[data,error])
+    },[data,error,isLoading])
     
     return (
         isLoading ? <div>loading...</div> :
