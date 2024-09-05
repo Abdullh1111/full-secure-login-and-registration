@@ -3,6 +3,7 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import VerifyOtp from "../pages/VerifyOtp";
 import MainLayout from "../pages/MainLayout";
+import EmailPage from "../pages/EmailPage";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: '/verifyOtp',
         element: <VerifyOtp />,
+    },
+    {
+        path: '/email',
+        element: <EmailPage></EmailPage>,
     }
 ])
 

@@ -6,37 +6,38 @@ import { handleFetchError, handleSuccess } from "../hooks/Toast";
 import Recapthcha from "./Recapthcha";
 
 const Login = () => {
-  const navigate = useNavigate()
-  const [update,{data,error,isLoading}] = useLoginUserMutation()
+  const navigate = useNavigate();
+  const [update, { data, error, isLoading }] = useLoginUserMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data : FieldValues) =>{
-    update(data)
-  }
+  const onSubmit = (data: FieldValues) => {
+    update(data);
+  };
 
-  useEffect(()=>{
-    if(data){
-      handleSuccess(data.message)
-      navigate('/')
+  useEffect(() => {
+    if (data) {
+      handleSuccess(data.message);
+      navigate("/");
     }
-    if(error){
-      handleFetchError(error)
+    if (error) {
+      handleFetchError(error);
     }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[error,data])
-  const [disabled , setDisabled] = useState(true)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, data]);
+  const [disabled, setDisabled] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function onChange(value: any) {
     if (value) {
-      setDisabled(false)
+      setDisabled(false);
     }
   }
-  return (
-    isLoading ? <div>Loading...</div> : 
+  return isLoading ? (
+    <div>Loading...</div>
+  ) : (
     <div>
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -84,14 +85,16 @@ const Login = () => {
                       {errors.password.message as string}
                     </p>
                   )}
-                  <a href="#" className="label-text-alt link link-hover">
+                  <Link to="/email" className="label-text-alt link link-hover">
                     Forgot password?
-                  </a>
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
                 <Recapthcha onChange={onChange}></Recapthcha>
-                <button disabled={disabled} className="btn btn-primary">Login</button>
+                <button disabled={disabled} className="btn btn-primary">
+                  Login
+                </button>
               </div>
             </form>
             <div className="mb-10 flex justify-center items-center">

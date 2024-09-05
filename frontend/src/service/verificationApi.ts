@@ -23,8 +23,23 @@ export const verificationApi = createApi({
                   body: data
                 })
               }),
+            passCode: builder.mutation({
+                query: (data) =>({
+                  url: '/passwordcode',
+                  method: 'POST',
+                  body: data
+                })
+              }),
+              updateData: builder.mutation({
+                query: (data) =>({
+                  url: '/updatedata',
+                  method: 'PUT',
+                  body: data
+                })
+              }),
+            
         })
 
 })
 
-export const {useEmailVerifyMutation, useRegisterMutation} = verificationApi
+export const {useEmailVerifyMutation, useRegisterMutation, usePassCodeMutation, useUpdateDataMutation} = verificationApi
