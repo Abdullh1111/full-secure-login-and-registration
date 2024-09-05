@@ -3,10 +3,11 @@ import { TUser } from "../Types/userType";
 import { useRegisterMutation } from "../service/verificationApi";
 import { useEffect } from "react";
 import { handleFetchError, handleSuccess } from "../hooks/Toast";
+import { useNavigate } from "react-router-dom";
 
 const VerifyOtp = () => {
-  
-  
+  const navigate = useNavigate();
+
   const datad = sessionStorage.getItem("registerData") as string;
   const parseData: TUser = JSON.parse(datad);
   const [update, { data, error, isLoading }] = useRegisterMutation();
@@ -23,10 +24,12 @@ const VerifyOtp = () => {
   useEffect(() => {
     if (data) {
       handleSuccess(data?.message);
+      navigate("/login");
     }
     if (error) {
       handleFetchError(error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, data]);
   return isLoading ? (
     <div>loading</div>
