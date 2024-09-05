@@ -13,7 +13,7 @@ const login = catchAsync(async (req, res) => {
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60 * 1000,
         secure: true, 
-        sameSite: "strict"
+        sameSite: "none"
     }).json({
         success: true,
         message: "User login successfully",
