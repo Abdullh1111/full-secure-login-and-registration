@@ -24,7 +24,7 @@ const login = catchAsync(async (req, res) => {
 // logout
 const logout = catchAsync(async (req, res) => {
     
-    res.status(201).cookie('token',''{
+    res.status(201).cookie('token','',{
         httpOnly: true,
         secure:true,
         sameSite: "none",
