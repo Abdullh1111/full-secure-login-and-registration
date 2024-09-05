@@ -1,1 +1,1 @@
-export const url = "http://localhost:3000/api/v1"
+export const url = "https://full-secure-login-and-registration.onrender.com/api/v1"
