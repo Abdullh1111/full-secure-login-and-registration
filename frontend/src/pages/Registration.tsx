@@ -2,8 +2,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import {handleLocalError,  handleFetchError } from "../hooks/Toast";
 import { useEmailVerifyMutation } from "../service/verificationApi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TUser } from "../Types/userType";
+import Recapthcha from "./Recapthcha";
 
 const Registration = () => {
   const navigate = useNavigate()
@@ -33,6 +34,14 @@ const Registration = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, data]);
 
+  
+  const [disabled , setDisabled] = useState(true)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onChange(value: any) {
+    if (value) {
+      setDisabled(false)
+    }
+  }
   return isLoading ? (
     <div>loading</div>
   ) : (
@@ -127,8 +136,9 @@ const Registration = () => {
                   </p>
                 )}
               </div>
+              <Recapthcha onChange={onChange}></Recapthcha>
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">
+                <button disabled={disabled} type="submit" className="btn mt-5 btn-primary">
                   Registration
                 </button>
               </div>
