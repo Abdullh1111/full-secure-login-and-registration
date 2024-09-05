@@ -12,7 +12,7 @@ const login = catchAsync(async (req, res) => {
     res.status(201).cookie('token',token,{
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        secure: true, 
+        secure: false, 
         sameSite: "none"
     }).json({
         success: true,
