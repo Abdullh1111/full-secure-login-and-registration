@@ -4,6 +4,7 @@ import Registration from "../pages/Registration";
 import VerifyOtp from "../pages/VerifyOtp";
 import MainLayout from "../pages/MainLayout";
 import EmailPage from "../pages/EmailPage";
+import NewPassword from "../pages/NewPassword";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     {
         path: '/email',
         element: <EmailPage></EmailPage>,
+    },
+    {
+        path: '/updatepass',
+        element: <NewPassword></NewPassword>,
     }
 ])
 

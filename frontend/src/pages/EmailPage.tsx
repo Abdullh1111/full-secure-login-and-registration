@@ -1,20 +1,23 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { usePassCodeMutation } from "../service/verificationApi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { handleFetchError } from "../hooks/Toast";
 
 const EmailPage = () => {
     const navigate = useNavigate()
+    const [email,setEmail] = useState('')
     const [update,{data,error,isLoading}] = usePassCodeMutation()
     const {register,handleSubmit} = useForm()
     const onSubmit = (value: FieldValues) =>{
         update(value)
+        setEmail(value.email)
     }
     useEffect(()=>{
         if(data){
-            sessionStorage.setItem("passCode",data.data)
-            navigate('/login')
+
+            sessionStorage.setItem("passCode",email)
+            navigate('/updatepass')
         }
         if(error){
             handleFetchError(error)
