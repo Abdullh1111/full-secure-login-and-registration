@@ -24,7 +24,12 @@ const login = catchAsync(async (req, res) => {
 // logout
 const logout = catchAsync(async (req, res) => {
     
-    res.status(201).clearCookie('token').json({
+    res.status(201).cookie('token',''{
+        httpOnly: true,
+        secure:true,
+        sameSite: "none",
+        maxAge: 0
+    }).json({
         success: true,
         message: "User logout successfully",
     })
