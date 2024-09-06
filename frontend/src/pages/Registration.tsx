@@ -2,9 +2,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import {handleLocalError,  handleFetchError } from "../hooks/Toast";
 import { useEmailVerifyMutation } from "../service/verificationApi";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { TUser } from "../Types/userType";
-import Recapthcha from "./Recapthcha";
+// import Recapthcha from "./Recapthcha";
 
 const Registration = () => {
   const navigate = useNavigate()
@@ -35,13 +35,13 @@ const Registration = () => {
   }, [error, data]);
 
   
-  const [disabled , setDisabled] = useState(true)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function onChange(value: any) {
-    if (value) {
-      setDisabled(false)
-    }
-  }
+  // const [disabled , setDisabled] = useState(true)
+  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // function onChange(value: any) {
+  //   if (value) {
+  //     setDisabled(false)
+  //   }
+  // }
   return isLoading ? (
     <div>loading</div>
   ) : (
@@ -136,9 +136,9 @@ const Registration = () => {
                   </p>
                 )}
               </div>
-              <Recapthcha onChange={onChange}></Recapthcha>
+              {/* <Recapthcha onChange={onChange}></Recapthcha> */}
               <div className="form-control mt-6">
-                <button disabled={disabled} type="submit" className="btn mt-5 btn-primary">
+                <button type="submit" className="btn mt-5 btn-primary">
                   Registration
                 </button>
               </div>
