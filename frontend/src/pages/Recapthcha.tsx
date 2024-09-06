@@ -10,11 +10,11 @@ const Recapthcha = ({onChange} : props) => {
 
   return (
     <div>
-      {siteKey ? (
+      {/* {siteKey ? (
         <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
       ) : (
         <p>Error: Site key is not set.</p>
-      )}
+      )} */}
     </div>
   );
 };
