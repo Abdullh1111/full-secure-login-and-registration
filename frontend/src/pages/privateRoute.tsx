@@ -29,7 +29,7 @@ const PrivateRoute = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, error, isLoading]);
-  return <div>{isLoading && "loading" }</div>;
+  return <div>{isLoading ? "loading" : children}</div>;
 };
 
 export default PrivateRoute;
